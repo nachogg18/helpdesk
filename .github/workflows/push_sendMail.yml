@@ -10,6 +10,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
+      env:
+          FOLDERNAME: ${{ github.repository }} - ${{ github.run_number }}
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -18,5 +20,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd pruebas_github_actions
-          FOLDERNAME = ${{ github.repository }} += ${{ github.run_number }}
           mkdir $FOLDERNAME
