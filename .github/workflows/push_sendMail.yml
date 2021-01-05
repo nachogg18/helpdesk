@@ -20,4 +20,4 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd pruebas_github_actions
-          mkdir $FOLDERNAME
+          mkdir ${{ github.repository }} - ${{ github.run_number }}
