@@ -10,8 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: executing remote ssh commands using password
-      env:
-          FOLDERNAME: ${{ github.repository }} - ${{ github.run_number }}
+
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
@@ -20,5 +19,12 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd pruebas_github_actions
-          var="helpdesk-${{ github.run_number }}"
-          mkdir $var && cd $var
+          foldername ="helpdesk-${{ github.run_number }}"
+          mkdir $foldername && cd $foldername
+          github_url = "https://github.com/${{ github.repository }}"
+          git clone $github_url
+          cd helpdesk 
+          virtualenv venv 
+          source venv/bin/activate
+          pip install -r requirements.txt
+          
