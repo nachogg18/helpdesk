@@ -18,4 +18,5 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd pruebas_github_actions
-          mkdir (${{ github.repository }} - ${{ github.run_number }})
+          FOLDERNAME = ${{ github.repository }} += ${{ github.run_number }}
+          mkdir $FOLDERNAME
