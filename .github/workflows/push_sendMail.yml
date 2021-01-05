@@ -19,9 +19,9 @@ jobs:
         port: ${{ secrets.PORT }}
         script: |
           cd pruebas_github_actions
-          foldername ="helpdesk-${{ github.run_number }}"
+          foldername="helpdesk-${{ github.run_number }}"
           mkdir $foldername && cd $foldername
-          github_url = "https://github.com/${{ github.repository }}"
+          github_url="https://github.com/${{ github.repository }}"
           git clone $github_url
           cd helpdesk 
           virtualenv venv 
